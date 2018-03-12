@@ -1,0 +1,7 @@
+[
+    {"items":"Vitamin deficiency", "address":"Check out various recipe to address vitamin deficiency", "library":"Ionicons", "icon":"ios-nutrition", "color":"orange"},
+    {"items":"Stress", "address":"Feeling stressfull, check out these recipe which will help you relax", "library":"FontAwesome", "icon":"music", "color":"brown"},
+    {"items":"Weight loss", "address":"Food that will help reduce your weight", "library":"MaterialCommunityIcons", "icon":"weight-kilogram", "color":"green"},
+    {"items":"Diabetes", "address":"Tasty recipes for diabetic patients","library":"MaterialCommunityIcons", "icon":"food-apple", "color":"#DC143C"}
+
+]
