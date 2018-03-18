@@ -1,26 +1,40 @@
 import React, { Component} from 'react';
-import { Image, TouchableOpacity, Button } from 'react-native';
+import { Image, TouchableOpacity, Button, View as ReactNativeView, Text as ReactNativeText, StyleSheet} from 'react-native';
 import { Container, Header, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
+import NavigationService from "../navigation/NavigationService"
 const cards = [
   {
+    id:1,
     text: 'Tom Yum Soup',
     name: 'One',
-    image: require('./assets/relax.jpeg'),
+    time: 10,
+    vitamin: "A",
+    nutrition:"reduce cholestrol",
+    image: require('../../assets/relax.jpeg'),
   },
   {
+    id:2,
     text: 'Tomato Soup',
     name: 'Two',
-    image: require('./assets/relax.jpeg'),
+    time: 10,
+    vitamin: "A",
+    image: require('../../assets/relax.jpeg'),
   },
   {
+    id:3,
     text: 'SweetCorn Soup',
     name: 'Three',
-    image: require('./assets/relax.jpeg'),
+    time: 10,
+    vitamin: "A",
+    image: require('../../assets/relax.jpeg'),
   },
   {
+    id:4,
     text: 'Soup of the day',
     name: 'Four',
-    image: require('./assets/relax.jpeg'),
+    time: 10,
+    vitamin: "A",
+    image: require('../../assets/relax.jpeg'),
   },
 ];
 
@@ -32,16 +46,15 @@ swipeRight = () => {
   console.log("hi")
 }
 
-showDetails = () => {
-  console.log("details")
+showDetails = (id) => (e) => {
+  NavigationService.navigate("RecipeDetailScreen", {id})
 }
 
 
   render() {
     return (
-
+    <ReactNativeView style={{flex:1}}>
         <Container>
-          <Header />
           <View>
             <DeckSwiper
               ref={(c) => this._deckSwiper = c}
@@ -64,7 +77,7 @@ showDetails = () => {
                   </CardItem>
                    <CardItem>
                     <Button
-                      onPress={this.showDetails}
+                      onPress={this.showDetails(item.id)}
                       title="View Recipe"
                       color="#841584"
                       accessibilityLabel="Learn more about this Recipe"
@@ -74,19 +87,13 @@ showDetails = () => {
 
                   </CardItem>
                   <CardItem>
-                    <Icon name="heart" style={{ color: '#ED4A6A' }} />
-                    <Text>{item.name}</Text>
-
-                    <Icon name="heart" style={{ color: '#ED4A6A' }} />
-                    <Text>{item.name}</Text>
+                    <Icon name="ios-nutrition" style={styles.icon} />
+                    <Text>{"vitamin " + item.vitamin} </Text>
                   </CardItem>
 
                   <CardItem>
-                    <Icon name="heart" style={{ color: '#ED4A6A' }} />
-                    <Text>{item.name}</Text>
-
-                    <Icon name="heart" style={{ color: '#ED4A6A' }} />
-                    <Text>{item.name}</Text>
+                    <Icon name="ios-stopwatch-outline" style={styles.icon} />
+                    <Text>{item.time + " minutes"} </Text>
                   </CardItem>
                 </Card>
               }
@@ -96,6 +103,16 @@ showDetails = () => {
             />
           </View>
         </Container>
+      </ReactNativeView>
     );
   }
 }
+
+styles = StyleSheet.create({
+
+  icon: {
+    color:'#ED4A6A',
+    paddingLeft:10
+  }
+
+})

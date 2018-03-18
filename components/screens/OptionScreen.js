@@ -13,10 +13,11 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
+import NavigationService from "../navigation/NavigationService"
 
 
-import data from "./sales.json"
-const relaxImage = require("./assets/relax.jpeg")
+import data from "../../json/recipeList.json"
 
 export default class HomeScreen extends React.Component {
 
@@ -40,11 +41,13 @@ export default class HomeScreen extends React.Component {
             return <FontAwesome name={record.icon} size={icon.size} color={record.color}/>
         case "MaterialCommunityIcons":
             return <MaterialCommunityIcons name={record.icon} size={icon.size} color={record.color}/>
+        case "Entypo":
+            return <Entypo name={record.icon} size={icon.size} color={record.color}/>
       }
   }
 
   showRecipeScreen = () => {
-     this.props.navigation.navigate('OptionScreen')
+     NavigationService.navigate('RecipeSwiper')
   }
 
 
@@ -69,7 +72,7 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <Text style={styles.title}>Recipe for?</Text>
+        <Text style={styles.title}>My Options?</Text>
         <ListView
           dataSource={this.state.dataSource}
           //JSX for each row
